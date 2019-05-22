@@ -1,44 +1,49 @@
-# Tmux public IP
+# Tmux bar extension
 
-Tmux plugin that enables displaying of your public IP address in your status line.
+This plugin adds the following information to your tmux navigation bar, either in `status-left` or `status-right`:
 
-The plugin will add new `#{public_ip}` format, which you can use in `status-left` or `status-right`.
+```
+#{default_ip}
+#{load_avg}
+```
+
+`#{default_ip}` shows the IP of your default gateway
+`#{load_avg}` shows the load average of the last 5, 10 and 15 minutes.
+
 
 Quick test:
+add the following line in your `~/.tmux.conf`
 
-    set -g status-right "IP: #{public_ip} | %a %h-%d %H:%M "
+    set -g status-right "IP: #{default_ip} | #{load_avg} "
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @plugin '0xAF/tmux-public-ip'
+    set -g @plugin 'annesteenbeek/tmux-bar-extension'
 
 Hit `prefix + I` to fetch the plugin and source it.
-
-`#{online_status}` interpolation should now work.
 
 ### Manual Installation
 
 Clone the repo:
 
-    $ git clone https://github.com/0xAF/tmux-public-ip ~/clone/path
+    $ git clone https://github.com/annesteenbeek/tmux-bar-extension ~/clone/path
 
 Add this line to the bottom of `.tmux.conf`:
 
-    run-shell ~/clone/path/tmux-public-ip.tmux
+    run-shell ~/clone/path/tmux-bar-extension.tmux
 
 Reload TMUX environment:
 
     # type this in terminal
     $ tmux source-file ~/.tmux.conf
 
-`#{public_ip}` interpolation should now work.
+`#{default_ip}` interpolation should now work.
 
-### Limitations
+### Modifying
 
-The script will check for your public IP address on 60 seconds interval by default
-If you want to change this, see the `scripts/public_ip.sh` file.
+I created this script to be easily extendable. Just read trough the code and add your own features.
 
 ### License
 

@@ -8,7 +8,7 @@ update_period=5
 update() {
 	cat << _EOF_ > $tmpfile
 LAST_TS=$(date +%s)
-LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.2f %.2f %.2f", $1, $2, $3 }')"
+LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f %.1f %.1f", $1, $2, $3 }')"
 _EOF_
 }
 
