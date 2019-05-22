@@ -2,13 +2,13 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
-tmpfile="/tmp/.tmux.default-ip.txt"
-update_period=60
+tmpfile="/tmp/.tmux.load-avg.txt"
+update_period=5
 
 update() {
 	cat << _EOF_ > $tmpfile
 LAST_TS=$(date +%s)
-IP_ADDR=$(ip route show | grep "default via[^6]" | awk '{print $3}')
+LOAD_AVG=$(cat /proc/loadavg | awk '{ printf "%.2f %.2f %.2f\n", $1, $2, $3 }')
 _EOF_
 }
 
@@ -22,5 +22,5 @@ else
 fi
 
 source $tmpfile
-printf $IP_ADDR
+printf $LOAD_AVG
 
