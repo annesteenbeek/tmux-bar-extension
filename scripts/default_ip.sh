@@ -8,7 +8,7 @@ update_period=60
 update() {
 	cat << _EOF_ > $tmpfile
 LAST_TS=$(date +%s)
-IP_ADDR=$(ip route show | grep "default via[^6]" | awk '{print $3}')
+IP_ADDR=$(hostname -I | awk '{print $1}')
 _EOF_
 }
 
