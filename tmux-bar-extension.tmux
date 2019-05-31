@@ -5,9 +5,11 @@ source "$CURRENT_DIR/scripts/helpers.sh"
 
 default_ip="#($CURRENT_DIR/scripts/default_ip.sh)"
 load_avg="#($CURRENT_DIR/scripts/load_avg.sh)"
+mem_use="#($CURRENT_DIR/scripts/memuse.sh)"
 
 default_ip_interpolation="\#{default_ip}"
 load_avg_interpolation="\#{load_avg}"
+mem_use_interpolation="\#{mem_use}"
 
 do_interpolation() {
 	local input=$1
@@ -15,7 +17,7 @@ do_interpolation() {
 
 	result=${input/$default_ip_interpolation/$default_ip}
 	result=${result/$load_avg_interpolation/$load_avg}
-	# result=${result/$upload_interpolation/$upload_speed}
+    result=${result/$mem_use_interpolation/$mem_use}
 
 	echo $result
 }
