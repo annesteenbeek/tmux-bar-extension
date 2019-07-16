@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 tmpfile="/tmp/.tmux.load-avg.txt"
-update_period=5
+update_period=$(get_tmux_option "@load_update_period" 5)
 
 update() {
 	cat << _EOF_ > $tmpfile
@@ -21,6 +22,5 @@ else
 	update
 fi
 
-source $tmpfile
-echo $LOAD_AVG
+printf "$LOAD_AVG"
 

@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 tmpfile="/tmp/.tmux.mem-use.txt"
-update_period=5
+update_period=$(get_tmux_option "@mem_update_period" 5)
 
 update() {
 	cat << _EOF_ > $tmpfile
@@ -21,6 +22,5 @@ else
 	update
 fi
 
-source $tmpfile
-echo $MEM_USE
+printf "$MEM_USE"
 
