@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "$CURRENT_DIR/scripts/helpers.sh"
+# source "$CURRENT_DIR/scripts/helpers.sh"
 
 default_ip="#($CURRENT_DIR/scripts/default_ip.sh)"
 load_avg="#($CURRENT_DIR/scripts/load_avg.sh)"
