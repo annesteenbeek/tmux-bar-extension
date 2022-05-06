@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+LC_NUMERIC="en_US.UTF-8"
 
 # CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # source "$CURRENT_DIR/helpers.sh"
@@ -22,6 +23,6 @@
 	# update
 # fi
 
-MEM_USE="$(free -hg | grep Mem: | awk '{ printf $3}' | sed 's/,/\./')"
-printf "$MEM_USE"
+MEM_USE="$(free -hg | grep Mem: | awk '{ printf "%.1fG", $3}')"
+echo "$MEM_USE"
 

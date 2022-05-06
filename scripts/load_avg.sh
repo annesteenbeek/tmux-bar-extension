@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+LC_NUMERIC=en_US.UTF-8
 
 # CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # source "$CURRENT_DIR/helpers.sh"
@@ -23,6 +24,6 @@
 # fi
 
 # LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f %.1f %.1f", $1, $2, $3 }')"
-LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f", $1 }' | sed -r 's/,/./g')"
+LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f", $1 }')"
 echo "$LOAD_AVG"
 
