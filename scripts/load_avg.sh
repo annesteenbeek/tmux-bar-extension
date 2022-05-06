@@ -23,6 +23,6 @@
 # fi
 
 # LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f %.1f %.1f", $1, $2, $3 }')"
-LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f", $1 }')"
+LOAD_AVG="$(cat /proc/loadavg | awk '{ printf "%.1f", $1 }' | sed -r 's/,/./g')"
 echo "$LOAD_AVG"
 
