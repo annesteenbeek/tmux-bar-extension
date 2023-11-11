@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# source "$CURRENT_DIR/scripts/helpers.sh"
+source "$CURRENT_DIR/scripts/helpers.sh"
 
 default_ip="#($CURRENT_DIR/scripts/default_ip.sh)"
 load_avg="#($CURRENT_DIR/scripts/load_avg.sh)"
@@ -13,13 +13,13 @@ mem_use_interpolation="\#{mem_use}"
 
 do_interpolation() {
 	local input=$1
-    local result=""
+	local result=""
 
 	result=${input/$default_ip_interpolation/$default_ip}
 	result=${result/$load_avg_interpolation/$load_avg}
-    result=${result/$mem_use_interpolation/$mem_use}
+	result=${result/$mem_use_interpolation/$mem_use}
 
-	echo $result
+	echo "$result"
 }
 
 update_tmux_option() {
