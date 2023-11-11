@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+LC_NUMERIC="en_US.UTF-8"
 
 # CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # source "$CURRENT_DIR/helpers.sh"
