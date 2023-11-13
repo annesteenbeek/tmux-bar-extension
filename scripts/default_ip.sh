@@ -3,7 +3,7 @@
 # CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # source "$CURRENT_DIR/helpers.sh"
 if [[ $(uname) == "Darwin" ]]; then
-		default_route_nic=$(route get default | grep -i interface | awk '{print $2}')
+		default_route_nic=$(route -n get default | grep -i interface | awk '{print $2}')
 		all_nics=$(ifconfig 2>/dev/null | awk -F':' '/^[a-z]/ && !/^lo/ { print $1 }' | tr '\n' ' ')
 		IFS=' ' read -ra all_nics_array <<< "$all_nics"
 		# the nic of the default route is considered first
